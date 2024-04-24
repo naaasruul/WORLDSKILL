@@ -1,3 +1,7 @@
 .dotted-border {
     border: dotted 5px grey;
 }
+
+.grey-background{
+    background-color: grey;
+}
