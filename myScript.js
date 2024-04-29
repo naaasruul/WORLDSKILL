@@ -124,7 +124,6 @@ $(function () {
         }
         // Clone the dragged element
         var clonedAccessory = ui.draggable.clone();
-
         clonedAccessory.draggable();
 
         // ui.offset.left merujuk kepada X & Y untuk draggable
@@ -192,9 +191,9 @@ $(function () {
 
 
   $("#save").click(function(){
-    console.log("save pressedd")
+    // console.log("save pressedd")
     // bina canvas
-    var canvas = document.createElement('canvas');  
+      var canvas = document.createElement('canvas');  
     var ctx = canvas.getContext("2d");
 
     // set width and height canvas so sama dengan width & heigth #imageFace
@@ -204,12 +203,13 @@ $(function () {
 
     // dapatkan bg URL dari #imageFace
     var backgroundImage = $("#imageFace").css('background-image')
-    console.log(backgroundImage.split(`"`)[1])
+    // console.log(backgroundImage.split(`"`)[1])
     var imgURL = backgroundImage.split(`"`)[1] //retrieve img URL
 
     // bina image di dalam canvas
     var bgImage = new Image()
-
+// var images = $("#imageFace").find('img') //use find()
+//       console.log(images)
     // bila image habis dilukis, masukkan dalam canvas
     bgImage.onload = function(){
       // lukiskan img tersebut didalam canvas
@@ -220,7 +220,6 @@ $(function () {
       var images = $("#imageFace").find('img') //use find()
       console.log(images)
 
-      
       images.each(function(){
         var image = this;
         var imagePosition = $(image).position()
@@ -234,21 +233,18 @@ $(function () {
       // to download the picture after clicked save
       var dataURL = canvas.toDataURL('image/png')
 
-           var link = document.createElement('a')
-           link.download = 'image.png'
-           link.href = dataURL;
+      var link = document.createElement('a')
+      link.download = 'image.png'
 
-           link.click();
+      link.href = dataURL;
+      link.click();
 
 
       // to check all is ok
       document.body.appendChild(canvas)
-      
     }
     bgImage.src = imgURL  ;
     
-
-
-
   })
+
 });
